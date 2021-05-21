@@ -15,26 +15,28 @@ public class DependencyInjectionApplication {
 
 		ApplicationContext ctx = SpringApplication.run(DependencyInjectionApplication.class, args);
 
-		System.out.println("--------------------No dependency Controller");
-		MyController myController = (MyController) ctx.getBean("myController");
-		String greeting = myController.sayHello();
-		System.out.println(greeting);
+		System.out.println("----------------------------------------");
+		System.out.println("--------------------Primary Bean Controller");
 
+		MyController myController = (MyController) ctx.getBean("myController");
+		System.out.println(myController.sayHello());
+
+		System.out.println("----------------------------------------");
 		System.out.println("--------------------Property");
 
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
 
+		System.out.println("----------------------------------------");
 		System.out.println("--------------------Setter");
 
 		SetterBasedInjectedController setterBasedInjectedController = (SetterBasedInjectedController) ctx.getBean("setterBasedInjectedController");
 		System.out.println(setterBasedInjectedController.getGreeting());
 
+		System.out.println("----------------------------------------");
 		System.out.println("--------------------Constructor");
 		ConstructorBasedInjectedController controller =  (ConstructorBasedInjectedController)  ctx.getBean("constructorBasedInjectedController");
 		System.out.println(controller.getGreeting());
-
-
 	}
 
 }
