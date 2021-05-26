@@ -3,10 +3,7 @@ package sfg.springguru.dependencyinjection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import sfg.springguru.dependencyinjection.controllers.ConstructorBasedInjectedController;
-import sfg.springguru.dependencyinjection.controllers.MyController;
-import sfg.springguru.dependencyinjection.controllers.PropertyInjectedController;
-import sfg.springguru.dependencyinjection.controllers.SetterBasedInjectedController;
+import sfg.springguru.dependencyinjection.controllers.*;
 
 @SpringBootApplication
 public class DependencyInjectionApplication {
@@ -14,6 +11,9 @@ public class DependencyInjectionApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(DependencyInjectionApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		System.out.println("----------------------------------------");
 		System.out.println("--------------------Primary Bean Controller");
